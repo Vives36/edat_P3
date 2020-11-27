@@ -3,12 +3,30 @@
 int no_deleted_registers = NO_DELETED_REGISTERS;
 
 void replaceExtensionByIdx(const char *fileName, char * indexName) {
+    int i=strlen(indexName);
+    if(!indexName){
+        exit();
+    }
+    
+    indexName[i-1]='x';
+    indexName[i-2]='d';
+    indexName[i-3]='i';
     return;
 }
 
 bool createTable(const char * tableName) {
-    return true;
+     int num = -1;
+    if(!tableName){
+        return false;
     }
+    fopen(tableName,"w");
+    fwrite(num,sizeof(int),1,tableName);
+    fclose(tableName);
+
+ 
+
+    return true;
+}
 
 bool createIndex(const char *indexName) {
     return true;
