@@ -4,8 +4,6 @@
 
 #ifndef CODE_V2_UTILS_H
 #define CODE_V2_UTILS_H
-#include <stdio.h>
-#include <stdbool.h>
 
 #define NO_DELETED_REGISTERS -1
 
@@ -42,11 +40,13 @@ typedef struct node {
    */
 
 bool createTable(const char * tableName);
+
 bool createIndex(const char * indexName);
-bool findKey(const char * book_id, const char * indexName,
-             int * nodeIDOrDataOffset);
-bool addTableEntry(Book * book, const char * tableName,
-                   const char * indexName);
+
+bool findKey(const char * book_id, const char * indexName, int * nodeIDOrDataOffset);
+
+bool addTableEntry(Book * book, const char * tableName, const char * indexName);
+
 bool addIndexEntry(char * book_id, int bookOffset, const char * indexName);
 
 void printTree(size_t level, const char * indexName);

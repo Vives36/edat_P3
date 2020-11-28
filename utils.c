@@ -1,3 +1,6 @@
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdbool.h>
 #include "utils.h"
 
 int no_deleted_registers = NO_DELETED_REGISTERS;
@@ -15,16 +18,19 @@ void replaceExtensionByIdx(const char *fileName, char * indexName) {
 }
 
 bool createTable(const char * tableName) {
-     int num = -1;
-    if(!tableName){
-        return false;
+    int flg=open(tableName, O_RDONLY);
+
+
+    if(flg<0){
+        Book* tbl;
+        tbl=(Book*)malloc(sizeof(Book));
+        if(!tbl) return false;
+        tbl->title=tableName;
+
+
     }
-    fopen(tableName,"w");
-    fwrite(num,sizeof(int),1,tableName);
-    fclose(tableName);
 
- 
-
+    
     return true;
 }
 
